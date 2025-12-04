@@ -940,18 +940,6 @@ gsap.to(".crystal-cluster", {
   "--pointer-y": "0%",
 });
 
-// Ash field fade-in with enhanced effect
-gsap.from(".ash-inner", {
-  scrollTrigger: {
-    trigger: ".ash",
-    start: "top 85%",
-  },
-  y: 80,
-  opacity: 0,
-  duration: 1.2,
-  ease: "power3.out",
-});
-
 // Ash column link animations
 gsap.from(".ash-column", {
   scrollTrigger: {
@@ -963,6 +951,96 @@ gsap.from(".ash-column", {
   duration: 1,
   ease: "power2.out",
   stagger: 0.1,
+});
+
+// SCROLL-TRIGGERED SLIDE-DOWN ANIMATIONS - Super slide by up to down effect
+// Basalt section dramatic slide-in
+gsap.from(".basalt-inner", {
+  scrollTrigger: {
+    trigger: ".basalt",
+    start: "top 100%",
+    end: "top 30%",
+    scrub: 1,
+    markers: false,
+  },
+  y: 150,
+  opacity: 0,
+  duration: 1,
+  ease: "power2.out",
+});
+
+// Obsidian cards staggered slide-down
+gsap.from(".obsidian-card", {
+  scrollTrigger: {
+    trigger: ".obsidian",
+    start: "top 100%",
+    end: "top 20%",
+    scrub: 1,
+  },
+  y: 120,
+  opacity: 0,
+  duration: 1,
+  ease: "power3.out",
+  stagger: 0.15,
+});
+
+// Pumice islands dramatic slide
+gsap.from(".pumice-islands", {
+  scrollTrigger: {
+    trigger: ".pumice",
+    start: "top 100%",
+    end: "top 25%",
+    scrub: 1,
+  },
+  y: 180,
+  opacity: 0,
+  duration: 1.2,
+  ease: "back.out(1.2)",
+});
+
+// Lava tubes section slide with rotation
+gsap.from(".lava-tubes-inner", {
+  scrollTrigger: {
+    trigger: ".lava-tubes",
+    start: "top 100%",
+    end: "top 20%",
+    scrub: 1,
+  },
+  y: 160,
+  rotationX: 15,
+  opacity: 0,
+  duration: 1.3,
+  ease: "power3.out",
+});
+
+// Crystal clusters slide with scale
+gsap.from(".crystal-cluster", {
+  scrollTrigger: {
+    trigger: ".crystals",
+    start: "top 100%",
+    end: "top 20%",
+    scrub: 1,
+  },
+  y: 140,
+  scale: 0.8,
+  opacity: 0,
+  duration: 1.1,
+  ease: "elastic.out(1, 0.5)",
+  stagger: 0.1,
+});
+
+// Ash field dramatic slide from top
+gsap.from(".ash-inner", {
+  scrollTrigger: {
+    trigger: ".ash",
+    start: "top 100%",
+    end: "top 30%",
+    scrub: 1,
+  },
+  y: 200,
+  opacity: 0,
+  duration: 1.4,
+  ease: "power2.out",
 });
 
 // Themed button click effects with lava physics

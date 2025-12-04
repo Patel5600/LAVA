@@ -644,7 +644,7 @@ section h1 {
     transform: translateY(0px);
   }
   50% {
-    transform: translateY(-20px);
+    transform: translateY(-8px);
   }
 }
 
@@ -780,7 +780,7 @@ section h1 {
     transform: translateY(0px);
   }
   50% {
-    transform: translateY(-15px);
+    transform: translateY(-5px);
   }
 }
 
@@ -891,7 +891,7 @@ section h1 {
     transform: translateY(0px);
   }
   50% {
-    transform: translateY(-25px);
+    transform: translateY(-8px);
   }
 }
 
@@ -967,7 +967,7 @@ section h1 {
     transform: translateY(0px);
   }
   50% {
-    transform: translateY(-20px);
+    transform: translateY(-7px);
   }
 }
 
@@ -1048,7 +1048,7 @@ section h1 {
     transform: translateY(0px);
   }
   50% {
-    transform: translateY(-18px);
+    transform: translateY(-6px);
   }
 }
 
@@ -1170,7 +1170,7 @@ section h1 {
     transform: translateY(0px);
   }
   50% {
-    transform: translateY(-15px);
+    transform: translateY(-6px);
   }
 }
 
