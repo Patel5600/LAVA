@@ -151,6 +151,11 @@ main {
   position: relative;
   z-index: 2;
   padding-inline: clamp(1.5rem, 4vw, 6rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 }
 
 .site-header {
@@ -219,10 +224,12 @@ nav a:hover::after {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   gap: 3rem;
   padding-top: 7rem;
   padding-bottom: 6rem;
   position: relative;
+  text-align: center;
 }
 
 .smoke-columns {
@@ -277,6 +284,7 @@ nav a:hover::after {
 
 .hero-content {
   max-width: 720px;
+  margin: 0 auto;
 }
 
 .micro-label {
@@ -335,6 +343,8 @@ section h1 {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 1.5rem;
+  max-width: 700px;
+  margin: 0 auto;
 }
 
 .hero-meta p {
@@ -344,7 +354,12 @@ section h1 {
 
 .hero-social {
   margin-top: 2.5rem;
-  max-width: 520px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .social-row {
@@ -505,6 +520,7 @@ section h1 {
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .scroll-indicator {
@@ -514,6 +530,7 @@ section h1 {
   font-size: 0.85rem;
   color: var(--text-muted);
   letter-spacing: 0.4em;
+  margin-top: 2rem;
 }
 
 .scroll-indicator .chevron {
@@ -541,17 +558,46 @@ section h1 {
 .section {
   position: relative;
   padding: 8rem 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .section-inner {
   position: relative;
   max-width: 1100px;
+  width: 90%;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 3rem 2rem;
+  border-radius: 40px;
+  backdrop-filter: blur(10px);
+  background: radial-gradient(circle at 50% 0%, rgba(255, 122, 0, 0.15), rgba(20, 10, 0, 0.8));
+  border: 1px solid rgba(255, 122, 0, 0.25);
+  box-shadow: 0 40px 120px rgba(0, 0, 0, 0.7), inset 0 0 60px rgba(255, 122, 0, 0.1);
+  animation: floatContainer 6s ease-in-out infinite;
+}
+
+@keyframes floatContainer {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
 }
 
 .section-copy {
-  max-width: 620px;
-  margin-bottom: 3rem;
+  max-width: 720px;
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .section-copy p {
@@ -644,16 +690,18 @@ section h1 {
 }
 
 .obsidian-inner {
-  display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.2fr);
-  gap: 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
   align-items: center;
 }
 
 .obsidian-cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 1.5rem;
+  width: 100%;
 }
 
 .obsidian-card {
@@ -664,9 +712,20 @@ section h1 {
   border-radius: 20px;
   background: radial-gradient(circle at 0 0, rgba(255, 122, 0, 0.35), rgba(0, 0, 0, 0.9));
   border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 32px 80px rgba(0, 0, 0, 0.9);
+  box-shadow: 0 32px 80px rgba(0, 0, 0, 0.9), 0 0 40px rgba(255, 122, 0, 0.2);
   overflow: hidden;
   transition: all 0.4s ease;
+  min-width: 240px;
+  animation: floatCard 4s ease-in-out infinite;
+}
+
+@keyframes floatCard {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
 }
 
 .obsidian-card h3 {
@@ -749,6 +808,9 @@ section h1 {
   display: flex;
   gap: 2rem;
   padding-top: 1.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
 }
 
 .pumice-island {
@@ -760,11 +822,21 @@ section h1 {
     0 35px 80px rgba(0, 0, 0, 0.85),
     0 0 20px rgba(255, 122, 0, 0.32);
   border: 1px solid rgba(255, 255, 255, 0.12);
-  text-align: left;
+  text-align: center;
   transform-origin: center;
   transition: all 0.4s ease;
   position: relative;
   overflow: hidden;
+  animation: floatIsland 5s ease-in-out infinite;
+}
+
+@keyframes floatIsland {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-25px);
+  }
 }
 
 .pumice-island::before {
@@ -812,6 +884,9 @@ section h1 {
   display: flex;
   gap: 4rem;
   will-change: transform;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
 }
 
 .tube-stop {
@@ -822,10 +897,22 @@ section h1 {
   border: 1px solid rgba(255, 255, 255, 0.16);
   box-shadow:
     0 40px 120px rgba(0, 0, 0, 0.9),
-    inset 0 0 40px rgba(255, 122, 0, 0.25);
+    inset 0 0 40px rgba(255, 122, 0, 0.25),
+    0 0 40px rgba(255, 122, 0, 0.15);
   transition: all 0.5s ease;
   position: relative;
   overflow: hidden;
+  animation: floatTube 4.5s ease-in-out infinite;
+  text-align: center;
+}
+
+@keyframes floatTube {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
 }
 
 .tube-stop::before {
@@ -872,16 +959,18 @@ section h1 {
 }
 
 .crystals-inner {
-  display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
-  gap: 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
   align-items: center;
 }
 
 .crystal-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 1.6rem;
+  width: 100%;
 }
 
 .crystal-cluster {
@@ -890,10 +979,21 @@ section h1 {
   border-radius: 24px;
   background: radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.08), rgba(0, 0, 0, 0.95));
   border: 1px solid rgba(255, 204, 102, 0.35);
-  box-shadow: 0 32px 90px rgba(0, 0, 0, 0.9);
+  box-shadow: 0 32px 90px rgba(0, 0, 0, 0.9), 0 0 50px rgba(255, 204, 102, 0.15);
   overflow: hidden;
   transition: all 0.5s ease;
   cursor: pointer;
+  min-width: 200px;
+  animation: floatCrystal 5.5s ease-in-out infinite;
+}
+
+@keyframes floatCrystal {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-18px);
+  }
 }
 
 .crystal-cluster h3 {
@@ -982,17 +1082,40 @@ section h1 {
 }
 
 .ash-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1.2fr);
+  display: flex;
+  flex-direction: column;
   gap: 3rem;
   position: relative;
   z-index: 2;
+  width: 100%;
+  align-items: center;
 }
 
 .ash-links {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  width: 100%;
+}
+
+.ash-copy {
+  max-width: 720px;
+  text-align: center;
+}
+
+.ash-column {
+  min-width: 160px;
+  animation: floatColumn 6.5s ease-in-out infinite;
+}
+
+@keyframes floatColumn {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
 }
 
 .ash-column h3 {
