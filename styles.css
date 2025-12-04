@@ -25,7 +25,7 @@ body {
   margin: 0;
   min-height: 100vh;
   background: 
-    url('data:image/svg+xml;utf8,<svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg"><defs><radialGradient id="volcanicGlow" cx="50%25" cy="30%25"><stop offset="0%25" style="stop-color:%23ff6b35;stop-opacity:0.4"/><stop offset="50%25" style="stop-color:%23ff2a00;stop-opacity:0.2"/><stop offset="100%25" style="stop-color:%230b0b0b;stop-opacity:0"/></radialGradient><linearGradient id="volcanicGradient" x1="0%25" y1="0%25" x2="0%25" y2="100%25"><stop offset="0%25" style="stop-color:%23330000;stop-opacity:0.8"/><stop offset="50%25" style="stop-color:%23660000;stop-opacity:0.5"/><stop offset="100%25" style="stop-color:%230b0b0b;stop-opacity:0.9"/></linearGradient></defs><rect width="1200" height="800" fill="url(%23volcanicGradient)"/><circle cx="600" cy="200" r="300" fill="url(%23volcanicGlow)"/><path d="M 600 150 L 750 500 L 450 500 Z" fill="%23330000" opacity="0.6"/><path d="M 600 180 L 720 450 L 480 450 Z" fill="%23660000" opacity="0.4"/></svg>') repeat-y,
+    url('data:image/svg+xml;utf8,<svg viewBox="0 0 1200 1600" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><radialGradient id="volcanicGlow" cx="50%25" cy="30%25"><stop offset="0%25" style="stop-color:%23ff6b35;stop-opacity:0.5"/><stop offset="50%25" style="stop-color:%23ff2a00;stop-opacity:0.25"/><stop offset="100%25" style="stop-color:%230b0b0b;stop-opacity:0"/></radialGradient><linearGradient id="volcanicGradient" x1="0%25" y1="0%25" x2="0%25" y2="100%25"><stop offset="0%25" style="stop-color:%23330000;stop-opacity:0.8"/><stop offset="50%25" style="stop-color:%23660000;stop-opacity:0.5"/><stop offset="100%25" style="stop-color:%230b0b0b;stop-opacity:0.9"/></linearGradient><filter id="volcanic"><feTurbulence baseFrequency="0.02" numOctaves="3" type="fractal"/></filter></defs><rect width="1200" height="1600" fill="url(%23volcanicGradient)"/><circle cx="600" cy="200" r="300" fill="url(%23volcanicGlow)"/><path d="M 600 150 L 750 500 L 450 500 Z" fill="%23330000" opacity="0.6"/><path d="M 600 180 L 720 450 L 480 450 Z" fill="%23660000" opacity="0.4"/><g opacity="0.15"><polygon points="150,100 200,50 250,100 200,150" fill="%23ff6b35"/><polygon points="1000,300 1080,280 1100,360 1020,380" fill="%23ff2a00"/><rect x="300" y="400" width="80" height="80" fill="%23ffcc66" transform="rotate(25 340 440)"/><polygon points="500,600 550,570 580,620 530,650" fill="%23ff7b00"/><rect x="800" y="150" width="60" height="60" fill="%23ff6b35" transform="rotate(45 830 180)"/><circle cx="200" cy="800" r="40" fill="%23ffcc66" opacity="0.3"/><polygon points="950,700 1000,650 1050,700 1000,750" fill="%23ff2a00" opacity="0.4"/><rect x="100" y="1200" width="100" height="100" fill="%23ff7b00" transform="rotate(-30 150 1250)"/><polygon points="1100,1100 1150,1050 1200,1100 1150,1150" fill="%23ff6b35"/><circle cx="600" cy="1300" r="50" fill="%23ffcc66" opacity="0.25"/><rect x="400" y="900" width="70" height="70" fill="%23ff2a00" transform="rotate(60 435 935)"/><polygon points="350,1400 400,1350 450,1400 400,1450" fill="%23ff7b00" opacity="0.3"/><circle cx="800" cy="1200" r="35" fill="%23ff6b35" opacity="0.4"/><polygon points="1050,1500 1100,1450 1150,1500 1100,1550" fill="%23ffcc66" opacity="0.2"/><rect x="50" y="500" width="90" height="90" fill="%23ff7b00" transform="rotate(-45 95 545)"/><circle cx="250" cy="1500" r="45" fill="%23ff2a00" opacity="0.3"/><polygon points="700,200 750,150 800,200 750,250" fill="%23ff6b35" opacity="0.4"/><rect x="900" y="800" width="75" height="75" fill="%23ffcc66" transform="rotate(15 937 837)"/><polygon points="450,1600 500,1550 550,1600 500,1650" fill="%23ff2a00" opacity="0.25"/></g></svg>') repeat-y,
     radial-gradient(ellipse at 30% 15%, rgba(255, 100, 0, 0.3), transparent 50%),
     radial-gradient(ellipse at 70% 20%, rgba(255, 42, 0, 0.35), transparent 55%),
     radial-gradient(ellipse at 50% 50%, rgba(255, 122, 0, 0.08), transparent 70%),
@@ -157,6 +157,73 @@ canvas#lava-scene {
   50% {
     opacity: 1.2;
   }
+}
+
+/* Geometric shape animations */
+@keyframes floatGeometry {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0.15;
+  }
+  50% {
+    transform: translateY(-30px) rotate(180deg);
+    opacity: 0.25;
+  }
+}
+
+@keyframes rotateGeometry {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulseGeometry {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.2;
+  }
+  50% {
+    transform: scale(1.15);
+    opacity: 0.35;
+  }
+}
+
+/* Geometric background elements */
+.geometric-bg {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.geometric-shape {
+  position: absolute;
+  pointer-events: none;
+  opacity: 0.15;
+}
+
+.geometric-shape.circle {
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 107, 53, 0.3), transparent 70%);
+}
+
+.geometric-shape.square {
+  background: linear-gradient(45deg, rgba(255, 122, 0, 0.25), rgba(255, 42, 0, 0.15));
+  animation: rotateGeometry 20s linear infinite;
+}
+
+.geometric-shape.triangle {
+  clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+  background: linear-gradient(135deg, rgba(255, 204, 102, 0.2), transparent);
+}
+
+.geometric-shape.diamond {
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  background: linear-gradient(-45deg, rgba(255, 100, 0, 0.25), rgba(255, 42, 0, 0.1));
 }
 
 .eruption-overlay,

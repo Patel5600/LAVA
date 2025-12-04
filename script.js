@@ -10,6 +10,45 @@ const gsap = gsapInstance;
 const ScrollTrigger = ScrollTriggerInstance;
 gsap.registerPlugin(ScrollTrigger);
 
+// Generate random geometric shapes for background
+function generateGeometricShapes() {
+  const container = document.getElementById("geometric-bg");
+  if (!container) return;
+
+  const shapes = ["circle", "square", "triangle", "diamond"];
+  const animations = ["floatGeometry", "rotateGeometry", "pulseGeometry"];
+  const shapeCount = 25;
+
+  for (let i = 0; i < shapeCount; i++) {
+    const shape = document.createElement("div");
+    const shapeType = shapes[Math.floor(Math.random() * shapes.length)];
+    const animation = animations[Math.floor(Math.random() * animations.length)];
+    const size = Math.random() * 150 + 40;
+    const duration = Math.random() * 15 + 10;
+    const delay = Math.random() * 5;
+
+    shape.classList.add("geometric-shape", shapeType);
+    shape.style.cssText = `
+      width: ${size}px;
+      height: ${size}px;
+      left: ${Math.random() * 100}%;
+      top: ${Math.random() * 100}%;
+      animation: ${animation} ${duration}s infinite ease-in-out;
+      animation-delay: ${delay}s;
+      filter: drop-shadow(0 0 ${Math.random() * 20 + 5}px rgba(255, 107, 53, 0.3));
+    `;
+
+    container.appendChild(shape);
+  }
+}
+
+// Initialize geometric shapes on page load
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", generateGeometricShapes);
+} else {
+  generateGeometricShapes();
+}
+
 // Smooth scrolling using Lenis (guard if CDN fails)
 const lenis = window.Lenis
   ? new Lenis({
