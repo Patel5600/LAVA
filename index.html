@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inferno | Volcanic Interactive Experience</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700&family=Space+Grotesk:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="ambient ash"></div>
+    <div class="ambient sparks"></div>
+    <div class="ambient rays"></div>
+    <div class="eruption-overlay" aria-hidden="true"></div>
+    <div class="chromatic-aberration" aria-hidden="true"></div>
+
+    <canvas id="lava-scene" aria-hidden="true"></canvas>
+
+    <header class="site-header">
+      <div class="logo">
+        <span class="logo-mark">Δ</span>
+        <span class="logo-type">Inferno Systems</span>
+      </div>
+      <nav>
+        <a href="#work">Fissures</a>
+        <a href="#about">Chamber</a>
+        <a href="#contact">Signal</a>
+      </nav>
+      <button class="cta ghost">Enter the Forge</button>
+    </header>
+
+    <main>
+      <section class="hero" id="top">
+        <div class="smoke-columns" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="hero-content">
+          <span class="micro-label">Molten Futurism / Industrial Sci-Fi Heat</span>
+          <h1>
+            A digital cathedral carved from <span class="accent">fire</span>.
+          </h1>
+          <p>
+            We craft cinematic, high-pressure interactive worlds that feel
+            forged inside an active volcano—experiences that vibrate with power,
+            danger, and impossible luxury.
+          </p>
+          <div class="hero-tags">
+            <span>Volcanic interfaces</span>
+            <span>Realtime atmospheres</span>
+            <span>Cinematic UX</span>
+          </div>
+          <div class="hero-cta">
+            <button class="cta primary">Ignite a project</button>
+            <button class="cta secondary">Watch the eruption</button>
+          </div>
+        </div>
+        <div class="hero-meta">
+          <div>
+            <span class="micro-label">Atmosphere</span>
+            <p>Volcanic minimalism, obsidian calm.</p>
+          </div>
+          <div>
+            <span class="micro-label">Toolkit</span>
+            <p>Three.js, GSAP, volumetric systems, sonic heat.</p>
+          </div>
+          <div>
+            <span class="micro-label">Status</span>
+            <p>Core temperature stable. Pressure rising.</p>
+          </div>
+        </div>
+        <div class="hero-social">
+          <span class="micro-label">Signal conduits</span>
+          <div class="social-row">
+            <a href="#" class="social-pill social-x" aria-label="Follow on X">
+              <span class="icon">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path
+                    d="M18.9 3H21l-4.6 5.2L21.8 21h-4.9l-3.1-5.8L9.9 21H3l4.9-5.6L2.4 3h5l2.9 5.4L18.9 3z"
+                  />
+                </svg>
+              </span>
+              <span class="label">X / Lava feed</span>
+            </a>
+            <a href="#" class="social-pill social-dribbble" aria-label="View Dribbble shots">
+              <span class="icon">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <circle cx="12" cy="12" r="9" />
+                  <path
+                    d="M10.2 4.2c2.3 2.4 3.8 5.4 4.6 8.7 2.1-.3 3.7-.1 4.5.1A8 8 0 0010.2 4.2zM8.5 4.5A8 8 0 004 11.7c1.4-.2 3-.2 4.5.1-.4-2.4-1-4.6-2-7.3zM9.3 13c.7 2 1.5 3.9 2.7 6A8 8 0 0020 14.1c-.7-.2-2.4-.6-4.6-.2-.9.2-1.8.4-2.8.7-.5-.3-1.9-.7-3.3-1z"
+                  />
+                </svg>
+              </span>
+              <span class="label">Dribbble / Embers</span>
+            </a>
+            <a href="#" class="social-pill social-behance" aria-label="View Behance case studies">
+              <span class="icon">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path
+                    d="M5.5 6H3v12h3.1c2.8 0 4.4-1.3 4.4-3.6 0-1.6-.9-2.5-2.1-2.8 1-.4 1.7-1.1 1.7-2.6C10.1 7 8.6 6 5.5 6zm-.3 4.5H5V8h.2c1.4 0 2.1.4 2.1 1.3 0 1-1 1.2-2.1 1.2zm.1 5.6H5v-3h.3c1.5 0 2.4.5 2.4 1.5 0 1.2-.8 1.5-2.4 1.5zM21 9.3c-2.4-1-4.9-.9-6.1.8-.6.8-.8 1.9-.8 3 0 3 1.8 4.9 4.8 4.9 1.6 0 2.7-.3 3.4-.7v-2.4c-.7.4-1.5.7-2.7.7-1.3 0-2.3-.7-2.4-2.1h5.1c.1-.2.1-.9.1-1.3 0-1.4-.5-2.8-1.4-2.9zM18.5 12c.1-.8.6-1.2 1.3-1.2.7 0 1.2.4 1.3 1.2h-2.6zM18.2 6.5h3.2V8H18.2z"
+                  />
+                </svg>
+              </span>
+              <span class="label">Behance / Case fires</span>
+            </a>
+          </div>
+        </div>
+        <div class="scroll-indicator">
+          <span>Scroll deeper</span>
+          <div class="chevron"></div>
+        </div>
+      </section>
+
+      <section class="portfolio" id="work">
+        <div class="section-header">
+          <span class="micro-label">Portfolio fissures</span>
+          <h2>Visions birthed in magma.</h2>
+          <p>
+            Each launch erupts through armored lava glass, revealing high-end
+            digital rituals for cinematic brands, experiential art, and immersive
+            commerce.
+          </p>
+        </div>
+        <div class="card-grid">
+          <article class="portfolio-card" data-tones="scarlet">
+            <div class="card-glow"></div>
+            <div class="card-content">
+              <span class="micro-label">Hellcore Luxury</span>
+              <h3>Vulcan Syndicate</h3>
+              <p>
+                A multi-sensory fashion portal where molten fabrics, volumetric
+                audio, and biometric input choreograph a living runway.
+              </p>
+              <div class="card-meta">
+                <span>Immersive commerce</span>
+                <span>2025</span>
+              </div>
+            </div>
+          </article>
+          <article class="portfolio-card" data-tones="ember">
+            <div class="card-glow"></div>
+            <div class="card-content">
+              <span class="micro-label">Molten Futurism</span>
+              <h3>Obsidian Archive</h3>
+              <p>
+                A living museum for generative relics stored inside a breathing
+                lava vault with adaptive light rays and intelligent smoke.
+              </p>
+              <div class="card-meta">
+                <span>Digital art</span>
+                <span>2025</span>
+              </div>
+            </div>
+          </article>
+          <article class="portfolio-card" data-tones="gold">
+            <div class="card-glow"></div>
+            <div class="card-content">
+              <span class="micro-label">Industrial Sci-Fi</span>
+              <h3>Core Resonance</h3>
+              <p>
+                A sonic brand experience where data ripples through basalt walls
+                and heat shimmer reveals interactive spatial narratives.
+              </p>
+              <div class="card-meta">
+                <span>Spatial web</span>
+                <span>2024</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="about" id="about">
+        <div class="lava-veins" aria-hidden="true"></div>
+        <div class="about-panel">
+          <span class="micro-label">Forged origins</span>
+          <h2>We design in tectonic pressure.</h2>
+          <p>
+            Inferno is a collective of cinematic technologists, environmental
+            artists, and interaction architects. We reverse minimalism into
+            molten maximalism—building interfaces that breathe, smolder, and
+            pulse with atmospheric storytelling.
+          </p>
+          <p>
+            Our approach blends computational volcanology, architectural
+            lighting, speculative typography, and ritual UX to sculpt branded
+            worlds that feel alive under your cursor.
+          </p>
+          <div class="about-meta">
+            <div>
+              <span class="micro-label">Studios</span>
+              <p>Reykjavík / Mexico City / Remote magma relays</p>
+            </div>
+            <div>
+              <span class="micro-label">Allies</span>
+              <p>Audi, NASA Arts, Void Airlines, Private Archives</p>
+            </div>
+          </div>
+        </div>
+        <div class="about-panel secondary" id="contact">
+          <span class="micro-label">Contact</span>
+          <h3>Signal the foundry</h3>
+          <p>
+            commissions@inferno.inc<br />
+            +1 (323) 555-HEAT
+          </p>
+          <button class="cta ghost wide">Transmit brief</button>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>© 2025 Inferno Systems. Crafted beneath the crust.</span>
+      <div class="footer-links">
+        <a href="#">Dribbble</a>
+        <a href="#">Behance</a>
+        <a href="#">Signal</a>
+      </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r155/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1/bundled/lenis.min.js"></script>
+    <script type="module" src="script.js"></script>
+  </body>
+</html>
+
