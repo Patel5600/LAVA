@@ -447,17 +447,17 @@ let pressure = 0;
 let isCharging = false;
 let lastEruptionTime = 0;
 const PRESSURE_MAX = 1;
-const PRESSURE_MIN_DELAY = 10; // seconds
-const PRESSURE_MAX_DELAY = 24;
+const PRESSURE_MIN_DELAY = 15; // Fixed 15 second intervals
+const PRESSURE_MAX_DELAY = 15;
 
 const eruptionState = {
   fragments: [],
+  meteorites: [],
 };
 
 function scheduleNextCharge() {
   const now = performance.now() / 1000;
-  const delay =
-    PRESSURE_MIN_DELAY + Math.random() * (PRESSURE_MAX_DELAY - PRESSURE_MIN_DELAY);
+  const delay = 15; // Always 15 seconds
   lastEruptionTime = now;
   setTimeout(() => startPressureCycle(), delay * 1000);
 }
@@ -469,7 +469,7 @@ function startPressureCycle(triggeredByScroll = false) {
 
   gsap.to({ value: 0 }, {
     value: targetPressure,
-    duration: triggeredByScroll ? 2.6 : 4,
+    duration: triggeredByScroll ? 2.6 : 3,
     ease: "power2.inOut",
     onUpdate: function () {
       pressure = this.targets()[0].value;
@@ -515,6 +515,49 @@ function spawnEruptionFragments() {
   }
 }
 
+function spawnMeteorites() {
+  const meteoriteCount = 50;
+  const meteoriteGeometry = new THREE.IcosahedronGeometry(0.15, 2);
+  const meteoriteMaterial = new THREE.MeshStandardMaterial({
+    color: 0x8B4513,
+    emissive: 0xFF6B35,
+    emissiveIntensity: 0.8,
+    roughness: 0.8,
+    metalness: 0.3,
+  });
+
+  for (let i = 0; i < meteoriteCount; i++) {
+    const meteor = new THREE.Mesh(meteoriteGeometry, meteoriteMaterial.clone());
+    meteor.position.set(
+      (Math.random() - 0.5) * 25,
+      12 + Math.random() * 8,
+      (Math.random() - 0.5) * 25
+    );
+    
+    const velocity = new THREE.Vector3(
+      (Math.random() - 0.5) * 0.8,
+      -8 - Math.random() * 4,
+      (Math.random() - 0.5) * 0.8
+    );
+    
+    const life = 3 + Math.random() * 2;
+    const rotationSpeed = new THREE.Vector3(
+      Math.random() * 0.1,
+      Math.random() * 0.1,
+      Math.random() * 0.1
+    );
+    
+    eruptionState.meteorites.push({ 
+      mesh: meteor, 
+      velocity, 
+      life, 
+      age: 0, 
+      rotationSpeed 
+    });
+    scene.add(meteor);
+  }
+}
+
 function triggerScreenShake() {
   const body = document.body;
   body.classList.add("eruption-active");
@@ -537,12 +580,34 @@ function triggerScreenShake() {
   );
 }
 
+function triggerIntenseScreenShake() {
+  const body = document.body;
+  gsap.fromTo(
+    body,
+    { x: -8, y: -8, rotation: -2 },
+    {
+      x: 8,
+      y: 8,
+      rotation: 2,
+      duration: 0.25,
+      repeat: 8,
+      yoyo: true,
+      ease: "power2.inOut",
+      onComplete: () => {
+        gsap.to(body, { x: 0, y: 0, rotation: 0, duration: 0.3, clearProps: "transform" });
+      },
+    }
+  );
+}
+
 function triggerEruption() {
   isCharging = false;
   pressure = 0;
   applyPressureVisuals(0);
   spawnEruptionFragments();
+  spawnMeteorites(); // New meteorite system
   triggerScreenShake();
+  triggerIntenseScreenShake(); // Additional intense shake
 
   // Short intense ember size spike
   gsap.fromTo(
@@ -712,6 +777,28 @@ function animate() {
     if (frag.age >= frag.life) {
       scene.remove(frag.mesh);
       eruptionState.fragments.splice(i, 1);
+    }
+  }
+
+  // Update meteorite physics
+  for (let i = eruptionState.meteorites.length - 1; i >= 0; i--) {
+    const meteor = eruptionState.meteorites[i];
+    const dt = clock.getDelta();
+    meteor.age += dt;
+    meteor.velocity.y -= 9.8 * dt; // Gravity
+    meteor.mesh.position.addScaledVector(meteor.velocity, dt);
+    meteor.mesh.rotation.x += meteor.rotationSpeed.x;
+    meteor.mesh.rotation.y += meteor.rotationSpeed.y;
+    meteor.mesh.rotation.z += meteor.rotationSpeed.z;
+    
+    const fade = Math.max(0, 1 - meteor.age / meteor.life);
+    meteor.mesh.material.emissiveIntensity = fade * 1.2;
+    meteor.mesh.material.opacity = fade;
+    meteor.mesh.material.transparent = true;
+    
+    if (meteor.age >= meteor.life || meteor.mesh.position.y < -10) {
+      scene.remove(meteor.mesh);
+      eruptionState.meteorites.splice(i, 1);
     }
   }
 
