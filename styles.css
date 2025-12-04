@@ -25,6 +25,7 @@ body {
   margin: 0;
   min-height: 100vh;
   background: 
+    url('data:image/svg+xml;utf8,<svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg"><defs><radialGradient id="volcanicGlow" cx="50%25" cy="30%25"><stop offset="0%25" style="stop-color:%23ff6b35;stop-opacity:0.4"/><stop offset="50%25" style="stop-color:%23ff2a00;stop-opacity:0.2"/><stop offset="100%25" style="stop-color:%230b0b0b;stop-opacity:0"/></radialGradient><linearGradient id="volcanicGradient" x1="0%25" y1="0%25" x2="0%25" y2="100%25"><stop offset="0%25" style="stop-color:%23330000;stop-opacity:0.8"/><stop offset="50%25" style="stop-color:%23660000;stop-opacity:0.5"/><stop offset="100%25" style="stop-color:%230b0b0b;stop-opacity:0.9"/></linearGradient></defs><rect width="1200" height="800" fill="url(%23volcanicGradient)"/><circle cx="600" cy="200" r="300" fill="url(%23volcanicGlow)"/><path d="M 600 150 L 750 500 L 450 500 Z" fill="%23330000" opacity="0.6"/><path d="M 600 180 L 720 450 L 480 450 Z" fill="%23660000" opacity="0.4"/></svg>') repeat-y,
     radial-gradient(ellipse at 30% 15%, rgba(255, 100, 0, 0.3), transparent 50%),
     radial-gradient(ellipse at 70% 20%, rgba(255, 42, 0, 0.35), transparent 55%),
     radial-gradient(ellipse at 50% 50%, rgba(255, 122, 0, 0.08), transparent 70%),
@@ -35,7 +36,7 @@ body {
       rgba(10, 2, 0, 0.98) 100%
     ),
     var(--charcoal);
-  background-attachment: fixed;
+  background-size: 1200px auto, cover, cover, cover, cover, cover;
   overflow-x: hidden;
   color: var(--text-body);
   font-size: 1rem;
@@ -63,6 +64,7 @@ body::after {
   mix-blend-mode: screen;
   opacity: 0.6;
   pointer-events: none;
+  z-index: 1;
   animation: volcanicFlare 4s ease-in-out infinite;
 }
 
@@ -205,13 +207,16 @@ body.in-tunnels .tunnel-vignette {
 
 main {
   position: relative;
-  z-index: 2;
+  z-index: 10;
   padding-inline: clamp(1.5rem, 4vw, 6rem);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 100%;
+  background: linear-gradient(180deg, rgba(11, 11, 11, 0.3) 0%, rgba(11, 11, 11, 0.6) 50%, rgba(11, 11, 11, 0.85) 100%);
+  margin-top: 0;
+  padding-top: 100px;
 }
 
 .site-header {
@@ -1228,7 +1233,10 @@ section h1 {
 }
 
 .site-footer {
-  padding: 2rem clamp(1.5rem, 4vw, 6rem) 4rem;
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  padding: 3rem clamp(1.5rem, 4vw, 6rem) 4rem;
   text-transform: uppercase;
   letter-spacing: 0.3em;
   display: flex;
@@ -1236,6 +1244,8 @@ section h1 {
   justify-content: space-between;
   gap: 1rem;
   color: var(--text-muted);
+  background: linear-gradient(180deg, rgba(11, 11, 11, 0.6) 0%, rgba(11, 11, 11, 0.95) 100%);
+  border-top: 1px solid rgba(255, 122, 0, 0.2);
 }
 
 .footer-links a {
